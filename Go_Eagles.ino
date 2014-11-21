@@ -13,7 +13,7 @@ unsigned short rB = matrix.Color333(0, 0, 7);
 unsigned short dB = matrix.Color333(0, 0, 1);
 unsigned short cB = matrix.Color333(0, 2, 7);
 unsigned short y = matrix.Color333(7, 7, 0);
-unsigned short r = matrix.Color333(7, 2, 0);
+unsigned short rC = matrix.Color333(7, 2, 0);
 unsigned short w = matrix.Color333(0, 0, 0);
 
 void goEagles(int c, int r) {
@@ -22,7 +22,7 @@ void goEagles(int c, int r) {
   matrix.drawPixel(c+0, 2, dB); //Dark Blue DONE
   matrix.drawPixel(c+0, 4, cB); //Columbia Blue DONE
   matrix.drawPixel(c+4, 5, y); //Yellow DONE
-  matrix.drawPixel(c+6, 7, r); //Dark Red DONE
+  matrix.drawPixel(c+6, 7, rC); //Dark Red DONE
   matrix.drawPixel(c+6, 3, w); //White
   */
   matrix.drawPixel(c+0, r+2, dB);
