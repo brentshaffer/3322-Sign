@@ -14,7 +14,7 @@ unsigned short dB = matrix.Color333(0, 0, 1);
 unsigned short cB = matrix.Color333(0, 2, 7);
 unsigned short y = matrix.Color333(7, 7, 0);
 unsigned short rC = matrix.Color333(7, 2, 0);
-unsigned short w = matrix.Color333(0, 0, 0);
+unsigned short w = matrix.Color333(7, 7, 7);
 
 void eagle(int c, int r) {
   /*
