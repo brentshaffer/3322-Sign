@@ -12,119 +12,84 @@ RGBmatrixPanel matrix(A, B, C, CLK, LAT, OE, false);
 
 unsigned short sB = matrix.Color333(0, 2, 7);
 
-//c goes from 0 to 31
-//r goes from 0 to 15
+int c1_8[2] = {6, 14};
+unsigned short cc1_8[2] = {sB, sB};
+
+int c2_3_4_9_10_11[3] = {5, 10, 15};
+unsigned short cc2_3_4_9_10_11[3] = {sB, sB, sB};
+
+int c5_12[7] = {5, 6, 9, 10, 11, 14, 15};
+unsigned short cc5_12[7] = {sB, sB, sB, sB, sB, sB, sB};
+
+int c6_13[8] = {6, 7, 8, 9, 11, 12, 13, 14};
+unsigned short cc6_13[8] = {sB, sB, sB, sB, sB, sB, sB, sB};
+
+int c15_22[5] = {6, 7, 13, 14, 15};
+unsigned short cc15_22[5] = {sB, sB, sB, sB, sB};
+
+int c16_23[5] = {5, 6, 12, 13, 15};
+unsigned short cc16_23[5] = {sB, sB, sB, sB, sB};
+
+int c17_24[4] = {5, 11, 12, 15};
+unsigned short cc17_24[4] = {sB, sB, sB, sB};
+
+int c18_25[4] = {5, 10, 11, 15};
+unsigned short cc18_25[4] = {sB, sB, sB, sB};
+
+int c19_26[5] = {5, 6, 9, 10, 15};
+unsigned short cc19_26[5] = {sB, sB, sB, sB, sB};
+
+int c20_27[5] = {6, 7, 8, 9, 15};
+unsigned short cc20_27[5] = {sB, sB, sB, sB, sB};
+
+void drawCol(int c, int r, int column[], int length, unsigned short color[]) {
+  for(int i=0; i<length; i++) {
+    matrix.drawPixel(c, r + column[i], color[i]);
+  }
+}
 
 void empty() {
   matrix.fillScreen(matrix.Color333(0, 0, 0));
 }
-//3s
-void c1_8(int c, int r) {
-  matrix.drawPixel(c, r+6, sB);
-  matrix.drawPixel(c, r+14, sB);
-}
-void c2_3_4_9_10_11(int c, int r) {
-  matrix.drawPixel(c, r+5, sB);
-  matrix.drawPixel(c, r+10, sB);
-  matrix.drawPixel(c, r+15, sB);
-}
-void c5_12(int c, int r) {
-  matrix.drawPixel(c, r+5, sB);
-  matrix.drawPixel(c, r+6, sB);
-  matrix.drawPixel(c, r+9, sB);
-  matrix.drawPixel(c, r+10, sB);
-  matrix.drawPixel(c, r+11, sB);
-  matrix.drawPixel(c, r+14, sB);
-  matrix.drawPixel(c, r+15, sB);
-}
-void c6_13(int c, int r) {
-  matrix.drawPixel(c, r+6, sB);
-  matrix.drawPixel(c, r+7, sB);
-  matrix.drawPixel(c, r+8, sB);
-  matrix.drawPixel(c, r+9, sB);
-  matrix.drawPixel(c, r+11, sB);
-  matrix.drawPixel(c, r+12, sB);
-  matrix.drawPixel(c, r+13, sB);
-  matrix.drawPixel(c, r+14, sB);
-}
-
-//2s
-void c15_22(int c, int r) {
-  matrix.drawPixel(c, r+6, sB);
-  matrix.drawPixel(c, r+7, sB);
-  matrix.drawPixel(c, r+13, sB);
-  matrix.drawPixel(c, r+14, sB);
-  matrix.drawPixel(c, r+15, sB);
-}
-void c16_23(int c, int r) {
-  matrix.drawPixel(c, r+5, sB);
-  matrix.drawPixel(c, r+6, sB);
-  matrix.drawPixel(c, r+12, sB);
-  matrix.drawPixel(c, r+13, sB);
-  matrix.drawPixel(c, r+15, sB);
-}
-void c17_24(int c, int r) {
-  matrix.drawPixel(c, r+5, sB);
-  matrix.drawPixel(c, r+11, sB);
-  matrix.drawPixel(c, r+12, sB);
-  matrix.drawPixel(c, r+15, sB);
-}
-void c18_25(int c, int r) {
-  matrix.drawPixel(c, r+5, sB);
-  matrix.drawPixel(c, r+10, sB);
-  matrix.drawPixel(c, r+11, sB);
-  matrix.drawPixel(c, r+15, sB);
-}
-void c19_26(int c, int r) {
-  matrix.drawPixel(c, r+5, sB);
-  matrix.drawPixel(c, r+6, sB);
-  matrix.drawPixel(c, r+9, sB);
-  matrix.drawPixel(c, r+10, sB);
-  matrix.drawPixel(c, r+15, sB);
-}
-void c20_27(int c, int r) {
-  matrix.drawPixel(c, r+6, sB);
-  matrix.drawPixel(c, r+7, sB);
-  matrix.drawPixel(c, r+8, sB);
-  matrix.drawPixel(c, r+9, sB);
-  matrix.drawPixel(c, r+15, sB);
-}
 
 void setup() {
   
-  }
+}
 void loop() {
-  int td = 40;
   matrix.begin();
+  int dR = 0;
+  int del = 40;
   delay(1000);
-  for(int x = 31; x >= -28; x--) {
+  for(int i=32; i>-28; i--) {
+    drawCol(i, dR, c1_8, 2, cc1_8);
+    drawCol(i+1, dR, c2_3_4_9_10_11, 3, cc2_3_4_9_10_11);
+    drawCol(i+2, dR, c2_3_4_9_10_11, 3, cc2_3_4_9_10_11);
+    drawCol(i+3, dR, c2_3_4_9_10_11, 3, cc2_3_4_9_10_11);
+    drawCol(i+4, dR, c5_12, 7, cc5_12);
+    drawCol(i+5, dR, c6_13, 8, cc6_13);
+    
+    drawCol(i+7, dR, c1_8, 2, cc1_8);
+    drawCol(i+8, dR, c2_3_4_9_10_11, 3, cc2_3_4_9_10_11);
+    drawCol(i+9, dR, c2_3_4_9_10_11, 3, cc2_3_4_9_10_11);
+    drawCol(i+10, dR, c2_3_4_9_10_11, 3, cc2_3_4_9_10_11);
+    drawCol(i+11, dR, c5_12, 7, cc5_12);
+    drawCol(i+12, dR, c6_13, 8, cc6_13);
+    
+    drawCol(i+14, dR, c15_22, 5, cc15_22);
+    drawCol(i+15, dR, c16_23, 5, cc16_23);
+    drawCol(i+16, dR, c17_24, 4, cc17_24);
+    drawCol(i+17, dR, c18_25, 4, cc18_25);
+    drawCol(i+18, dR, c19_26, 5, cc19_26);
+    drawCol(i+19, dR, c20_27, 5, cc20_27);
+    
+    drawCol(i+21, dR, c15_22, 5, cc15_22);
+    drawCol(i+22, dR, c16_23, 5, cc16_23);
+    drawCol(i+23, dR, c17_24, 4, cc17_24);
+    drawCol(i+24, dR, c18_25, 4, cc18_25);
+    drawCol(i+25, dR, c19_26, 5, cc19_26);
+    drawCol(i+26, dR, c20_27, 5, cc20_27);
+    
+    delay(del);
     empty();
-    c1_8(x, 0);
-    c2_3_4_9_10_11(x + 1, 0);
-    c2_3_4_9_10_11(x + 2, 0);
-    c2_3_4_9_10_11(x + 3, 0);
-    c5_12(x + 4, 0);
-    c6_13(x + 5, 0);
-    c1_8(x + 7, 0);
-    c2_3_4_9_10_11(x + 8, 0);
-    c2_3_4_9_10_11(x + 9, 0);
-    c2_3_4_9_10_11(x + 10, 0);
-    c5_12(x + 11, 0);
-    c6_13(x + 12, 0);
-    //33 /\
-    //22 \/
-    c15_22(x + 14, 0);
-    c16_23(x + 15, 0);
-    c17_24(x + 16, 0);
-    c18_25(x + 17, 0);
-    c19_26(x + 18, 0);
-    c20_27(x + 19, 0);
-    c15_22(x + 21, 0);
-    c16_23(x + 22, 0);
-    c17_24(x + 23, 0);
-    c18_25(x + 24, 0);
-    c19_26(x + 25, 0);
-    c20_27(x + 26, 0);
-    delay(td);
   }
 }
